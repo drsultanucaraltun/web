@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="tr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eğitimde Yapay Zeka Ustalık Kursu | Geleceğin Öğretmeni Olun</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            900: '#1e3a8a',
+                        },
+                        secondary: '#8b5cf6', // Violet
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Styles for subtle animations */
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+        .delay-300 { animation-delay: 300ms; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .blob {
+            position: absolute;
+            filter: blur(60px);
+            z-index: 0;
+            opacity: 0.4;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-gray-50 antialiased overflow-x-hidden">
+
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-white/90 backdrop-blur-md border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-600 to-secondary flex items-center justify-center text-white font-bold text-xl shadow-lg">
+                        <i class="fa-solid fa-brain"></i>
+                    </div>
+                    <span class="font-bold text-xl tracking-tight text-gray-900">Edu<span class="text-primary-600">AI</span></span>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#neden-biz" class="text-gray-600 hover:text-primary-600 font-medium transition">Neden YZ?</a>
+                    <a href="#mufredat" class="text-gray-600 hover:text-primary-600 font-medium transition">Müfredat</a>
+                    <a href="#egitmen" class="text-gray-600 hover:text-primary-600 font-medium transition">Eğitmen</a>
+                    <a href="#sss" class="text-gray-600 hover:text-primary-600 font-medium transition">SSS</a>
+                    <a href="#kayit" class="bg-primary-600 hover:bg-primary-700 text-white px-6 py-2.5 rounded-full font-semibold shadow-md hover:shadow-lg transition transform hover:-translate-y-0.5">
+                        Hemen Kaydol
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-gray-900 focus:outline-none p-2">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-100 shadow-xl">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#neden-biz" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50">Neden YZ?</a>
+                <a href="#mufredat" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50">Müfredat</a>
+                <a href="#egitmen" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50">Eğitmen</a>
+                <a href="#sss" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50">SSS</a>
+                <a href="#kayit" class="block w-full text-center mt-4 bg-primary-600 text-white px-5 py-3 rounded-lg font-semibold shadow-md">Hemen Kaydol</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden">
+        <!-- Background Blobs -->
+        <div class="blob bg-primary-300 w-96 h-96 rounded-full top-0 left-[-10%] mix-blend-multiply"></div>
+        <div class="blob bg-secondary w-96 h-96 rounded-full top-20 right-[-10%] mix-blend-multiply opacity-30"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-8">
+                
+                <!-- Hero Content -->
+                <div class="lg:w-1/2 flex flex-col items-start text-left fade-in-up">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-primary-600 text-sm font-semibold mb-6">
+                        <span class="relative flex h-3 w-3">
+                          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-400 opacity-75"></span>
+                          <span class="relative inline-flex rounded-full h-3 w-3 bg-primary-600"></span>
+                        </span>
+                        Yeni Dönem Kayıtları Başladı!
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight mb-6">
+                        Eğitimde <span class="gradient-text">Yapay Zeka</span> Devrimine Hazır Mısınız?
+                    </h1>
+                    <p class="text-lg text-gray-600 mb-8 max-w-2xl leading-relaxed">
+                        Öğretmenler ve eğitimciler için özel olarak tasarlanmış bu uygulamalı kurs ile ders planlamadan, materyal üretimine ve öğrenci değerlendirmesine kadar yapay zekanın gücünü keşfedin. Zaman kazanın, etkinizi artırın.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+                        <a href="#kayit" class="bg-primary-600 hover:bg-primary-700 text-white text-center px-8 py-4 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transition transform hover:-translate-y-1 flex items-center justify-center gap-2">
+                            Sınırlı Kontenjana Katıl <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                        <a href="#mufredat" class="bg-white hover:bg-gray-50 text-gray-800 border border-gray-200 text-center px-8 py-4 rounded-xl font-bold text-lg shadow-sm transition flex items-center justify-center gap-2">
+                            <i class="fa-regular fa-file-lines"></i> Müfredatı İncele
+                        </a>
+                    </div>
+                    
+                    <!-- Social Proof -->
+                    <div class="mt-10 flex items-center gap-4 pt-6 border-t border-gray-200 w-full max-w-md">
+                        <div class="flex -space-x-3">
+                            <img class="w-10 h-10 rounded-full border-2 border-white object-cover" src="https://placehold.co/100x100/e2e8f0/64748b?text=A" alt="Öğrenci">
+                            <img class="w-10 h-10 rounded-full border-2 border-white object-cover" src="https://placehold.co/100x100/cbd5e1/475569?text=B" alt="Öğrenci">
+                            <img class="w-10 h-10 rounded-full border-2 border-white object-cover" src="https://placehold.co/100x100/94a3b8/334155?text=C" alt="Öğrenci">
+                            <div class="w-10 h-10 rounded-full border-2 border-white bg-gray-100 flex items-center justify-center text-xs font-bold text-gray-600">500+</div>
+                        </div>
+                        <div class="text-sm">
+                            <div class="flex text-yellow-400 text-xs">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                            <span class="font-semibold text-gray-800">4.9/5</span> Eğitimci Puanı
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Image/Graphic -->
+                <div class="lg:w-1/2 w-full fade-in-up delay-200 relative">
+                    <!-- Decorative background element for image -->
+                    <div class="absolute inset-0 bg-gradient-to-tr from-primary-200 to-purple-200 rounded-[2rem] transform rotate-3 scale-105 -z-10"></div>
+                    <img src="https://placehold.co/600x450/1e3a8a/ffffff?text=AI+in+Education+Dashboard+Mockup" alt="Eğitimde Yapay Zeka Uygulamaları" class="w-full h-auto rounded-[2rem] shadow-2xl relative z-10 border border-white/50">
+                    
+                    <!-- Floating Badge -->
+                    <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-xl shadow-xl flex items-center gap-4 z-20 animate-bounce" style="animation-duration: 3s;">
+                        <div class="bg-green-100 p-3 rounded-full text-green-600">
+                            <i class="fa-solid fa-clock text-xl"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500 font-semibold uppercase">Haftalık Tasarruf</p>
+                            <p class="text-xl font-bold text-gray-900">10+ Saat</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Logos/Trust Section -->
+    <div class="bg-white py-8 border-y border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-6">Şu Kurumlardaki Eğitimciler Tarafından Tercih Ediliyor</p>
+            <div class="flex flex-wrap justify-center gap-8 md:gap-16 opacity-50 grayscale">
+                <!-- Using FontAwesome icons as placeholder logos -->
+                <div class="flex items-center gap-2 text-xl font-bold"><i class="fa-solid fa-graduation-cap text-3xl"></i> Akademi Lisesi</div>
+                <div class="flex items-center gap-2 text-xl font-bold"><i class="fa-solid fa-building-columns text-3xl"></i> Merkez Üniversitesi</div>
+                <div class="flex items-center gap-2 text-xl font-bold"><i class="fa-solid fa-school text-3xl"></i> İnovasyon Koleji</div>
+                <div class="flex items-center gap-2 text-xl font-bold"><i class="fa-solid fa-book-open text-3xl"></i> Modern Eğitim Kurumları</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <section id="neden-biz" class="py-20 bg-gray-50 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 fade-in-up">
+                <h2 class="text-primary-600 font-semibold tracking-wide uppercase text-sm mb-2">Neden Bu Kursu Almalısınız?</h2>
+                <h3 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Öğretmenlik Deneyiminizi Yapay Zeka ile Yeniden Tanımlayın</h3>
+                <p class="text-gray-600 text-lg">Yapay zeka araçları işinizi elinizden almayacak, ancak yapay zeka kullanan eğitimciler fark yaratacak. İşte size kazandıracaklarımız:</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition duration-300 border border-gray-100 fade-in-up delay-100 group">
+                    <div class="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-bolt text-2xl text-primary-600"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">Işık Hızında Ders Planlama</h4>
+                    <p class="text-gray-600 leading-relaxed">Müfredata uygun, yaratıcı ve detaylı ders planlarını saatler yerine dakikalar içinde hazırlayın. Yaratıcılığınızı serbest bırakın.</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition duration-300 border border-gray-100 fade-in-up delay-200 group">
+                    <div class="w-14 h-14 bg-purple-50 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-shapes text-2xl text-secondary"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">Özelleştirilmiş Materyaller</h4>
+                    <p class="text-gray-600 leading-relaxed">Farklı öğrenme seviyelerindeki öğrencileriniz için anında okuma parçaları, çalışma kağıtları ve quizler üretin.</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition duration-300 border border-gray-100 fade-in-up delay-300 group">
+                    <div class="w-14 h-14 bg-green-50 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-chart-line text-2xl text-green-500"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">Hızlı ve Etkili Değerlendirme</h4>
+                    <p class="text-gray-600 leading-relaxed">Açık uçlu soruları, kompozisyonları ve projeleri YZ destekli rubriklerle saniyeler içinde analiz edin, detaylı geri bildirim verin.</p>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition duration-300 border border-gray-100 fade-in-up delay-100 group">
+                    <div class="w-14 h-14 bg-yellow-50 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-image text-2xl text-yellow-500"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">Görsel ve İşitsel İçerik Üretimi</h4>
+                    <p class="text-gray-600 leading-relaxed">Sunumlarınız için telifsiz, konunuza tam uygun görseller ve etkileşimli içerikleri metin komutlarıyla anında oluşturun.</p>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition duration-300 border border-gray-100 fade-in-up delay-200 group">
+                    <div class="w-14 h-14 bg-red-50 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-robot text-2xl text-red-500"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">Sanal Asistan ve Chatbotlar</h4>
+                    <p class="text-gray-600 leading-relaxed">Öğrencilerinizin 7/24 soru sorabileceği, ders materyallerine göre eğitilmiş size özel yapay zeka asistanları kurmayı öğrenin.</p>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition duration-300 border border-gray-100 fade-in-up delay-300 group">
+                    <div class="w-14 h-14 bg-teal-50 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-shield-halved text-2xl text-teal-500"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">Etik ve Güvenlik Farkındalığı</h4>
+                    <p class="text-gray-600 leading-relaxed">Öğrencilerin YZ araçlarını kopyalama için değil, öğrenme asistanı olarak kullanmalarını sağlayacak pedagojik yaklaşımları keşfedin.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Curriculum Section -->
+    <section id="mufredat" class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Adım Adım Başarı: Kurs Müfredatı</h2>
+                <p class="text-gray-600 text-lg">Pratiğe dayalı, tamamen eğitimcilerin ihtiyaçlarına odaklanmış 5 haftalık yoğun program.</p>
+            </div>
+
+            <div class="space-y-4 fade-in-up delay-100">
+                <!-- Module 1 -->
+                <div class="border border-gray-200 rounded-xl overflow-hidden shadow-sm">
+                    <button class="accordion-btn w-full px-6 py-5 bg-gray-50 hover:bg-gray-100 flex justify-between items-center transition focus:outline-none text-left">
+                        <div class="flex items-center gap-4">
+                            <span class="bg-primary-100 text-primary-700 font-bold px-3 py-1 rounded-md text-sm">Modül 1</span>
+                            <h4 class="font-bold text-lg text-gray-900">Yapay Zekaya Giriş ve "Prompt" Mühendisliği</h4>
+                        </div>
+                        <i class="fas fa-chevron-down text-gray-400 transition-transform duration-300"></i>
+                    </button>
+                    <div class="accordion-content hidden px-6 py-5 bg-white border-t border-gray-200">
+                        <p class="text-gray-600 mb-4">Üretken yapay zekanın temellerini atıyoruz. ChatGPT, Gemini ve Claude gibi araçlarla doğru ve etkili iletişim kurmanın (prompt yazma) sırlarını öğrenin.</p>
+                        <ul class="list-none space-y-2 text-gray-600 text-sm">
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-green-500 mt-1"></i> Üretken YZ nedir ve nasıl çalışır?</li>
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-green-500 mt-1"></i> Etkili "Prompt" (Komut) yazma formülleri (Bağlam + Görev + Format)</li>
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-green-500 mt-1"></i> Eğitimciler için hayat kurtaran prompt şablonları kütüphanesi</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Module 2 -->
+                <div class="border border-gray-200 rounded-xl overflow-hidden shadow-sm">
+                    <button class="accordion-btn w-full px-6 py-5 bg-gray-50 hover:bg-gray-100 flex justify-between items-center transition focus:outline-none text-left">
+                        <div class="flex items-center gap-4">
+                            <span class="bg-primary-100 text-primary-700 font-bold px-3 py-1 rounded-md text-sm">Modül 2</span>
+                            <h4 class="font-bold text-lg text-gray-900">Ders Planlama ve Materyal Üretimi</h4>
+                        </div>
+                        <i class="fas fa-chevron-down text-gray-400 transition-transform duration-300"></i>
+                    </button>
+                    <div class="accordion-content hidden px-6 py-5 bg-white border-t border-gray-200">
+                        <p class="text-gray-600 mb-4">Ders hazırlık sürecinizi baştan aşağı değiştiriyoruz. MEB/Okul müfredatınıza uygun materyalleri saniyeler içinde üretin.</p>
+                        <ul class="list-none space-y-2 text-gray-600 text-sm">
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-green-500 mt-1"></i> Haftalık ve günlük detaylı ders planı oluşturma</li>
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-green-500 mt-1"></i> Okuma parçaları, çalışma kağıtları ve özet notlar hazırlama</li>
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-green-500 mt-1"></i> Farklılaştırılmış eğitim: Aynı konuyu farklı zorluk seviyelerinde ürettirme</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Module 3 -->
+                <div class="border border-gray-200 rounded-xl overflow-hidden shadow-sm">
+                    <button class="accordion-btn w-full px-6 py-5 bg-gray-50 hover:bg-gray-100 flex justify-between items-center transition focus:outline-none text-left">
+                        <div class="flex items-center gap-4">
+                            <span class="bg-primary-100 text-primary-700 font-bold px-3 py-1 rounded-md text-sm">Modül 3</span>
+                            <h4 class="font-bold text-lg text-gray-900">Ölçme, Değerlendirme ve Geri Bildirim</h4>
+                        </div>
+                        <i class="fas fa-chevron-down text-gray-400 transition-transform duration-300"></i>
+                    </button>
+                    <div class="accordion-content hidden px-6 py-5 bg-white border-t border-gray-200">
+                        <p class="text-gray-600 mb-4">Sınav hazırlama ve kağıt okuma yükünüze son. Adil, hızlı ve yapıcı değerlendirme süreçleri oluşturun.</p>
+                        <ul class="list-none space-y-2 text-gray-600 text-sm">
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-green-500 mt-1"></i> Çoktan seçmeli, doğru/yanlış ve açık uçlu soru bankası oluşturma</li>
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-green-500 mt-1"></i> Performans ödevleri için Rubrik (Dereceli Puanlama Anahtarı) tasarımı</li>
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-green-500 mt-1"></i> Öğrenci ödevlerine kişiselleştirilmiş, yapıcı geri bildirim metinleri yazdırma</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Module 4 -->
+                <div class="border border-gray-200 rounded-xl overflow-hidden shadow-sm">
+                    <button class="accordion-btn w-full px-6 py-5 bg-gray-50 hover:bg-gray-100 flex justify-between items-center transition focus:outline-none text-left">
+                        <div class="flex items-center gap-4">
+                            <span class="bg-primary-100 text-primary-700 font-bold px-3 py-1 rounded-md text-sm">Modül 4</span>
+                            <h4 class="font-bold text-lg text-gray-900">Görsel Yapay Zeka ve Sunum Araçları</h4>
+                        </div>
+                        <i class="fas fa-chevron-down text-gray-400 transition-transform duration-300"></i>
+                    </button>
+                    <div class="accordion-content hidden px-6 py-5 bg-white border-t border-gray-200">
+                        <p class="text-gray-600 mb-4">Derslerinizi görsel olarak zenginleştirin. Midjourney, DALL-E ve YZ destekli sunum araçlarının eğitimde kullanımı.</p>
+                        <ul class="list-none space-y-2 text-gray-600 text-sm">
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-green-500 mt-1"></i> Eğitim materyalleri için özgün görsel oluşturma komutları</li>
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-green-500 mt-1"></i> Tome, Gamma gibi araçlarla dakikalar içinde profesyonel sunumlar hazırlama</li>
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-green-500 mt-1"></i> İnteraktif öğrenme materyalleri tasarlama</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Module 5 -->
+                <div class="border border-gray-200 rounded-xl overflow-hidden shadow-sm">
+                    <button class="accordion-btn w-full px-6 py-5 bg-gray-50 hover:bg-gray-100 flex justify-between items-center transition focus:outline-none text-left">
+                        <div class="flex items-center gap-4">
+                            <span class="bg-primary-100 text-primary-700 font-bold px-3 py-1 rounded-md text-sm">Modül 5</span>
+                            <h4 class="font-bold text-lg text-gray-900">Eğitimde YZ Etiği ve Öğrenci Rehberliği</h4>
+                        </div>
+                        <i class="fas fa-chevron-down text-gray-400 transition-transform duration-300"></i>
+                    </button>
+                    <div class="accordion-content hidden px-6 py-5 bg-white border-t border-gray-200">
+                        <p class="text-gray-600 mb-4">Yapay zekanın okullardaki sınırları, intihal sorunları ve öğrencilere doğru dijital vatandaşlık becerilerini kazandırma.</p>
+                        <ul class="list-none space-y-2 text-gray-600 text-sm">
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-green-500 mt-1"></i> Öğrencilerin YZ'yi kopyalama yerine öğrenme aracı olarak kullanması</li>
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-green-500 mt-1"></i> YZ destekli ödevlerde değerlendirme stratejileri (Süreç odaklı değerlendirme)</li>
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-green-500 mt-1"></i> Veri gizliliği ve etik kullanım senaryoları</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instructor Section -->
+    <section id="egitmen" class="py-20 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100 fade-in-up">
+                <div class="flex flex-col md:flex-row">
+                    <!-- Instructor Image -->
+                    <div class="md:w-2/5 bg-primary-100 relative">
+                        <img src="https://placehold.co/600x800/1e4ed8/ffffff?text=Egitmen+Foto" alt="Eğitmen" class="w-full h-full object-cover">
+                        <div class="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-gray-900/80 to-transparent"></div>
+                        <div class="absolute bottom-6 left-6 text-white">
+                            <p class="font-bold text-2xl">Dr. Ahmet Yılmaz</p>
+                            <p class="text-blue-200">Eğitim Teknolojileri Uzmanı</p>
+                        </div>
+                    </div>
+                    <!-- Instructor Bio -->
+                    <div class="md:w-3/5 p-8 md:p-12 flex flex-col justify-center">
+                        <h2 class="text-3xl font-bold text-gray-900 mb-6">Eğitmeninizle Tanışın</h2>
+                        <div class="prose text-gray-600 mb-8">
+                            <p class="mb-4">15 yıllık eğitimcilik geçmişi ve son 5 yıldır eğitim teknolojileri (EdTech) üzerine yaptığı akademik çalışmalarla Dr. Ahmet Yılmaz, teoriyi doğrudan sınıf içi pratiklerle birleştiriyor.</p>
+                            <p>Türkiye'nin önde gelen okullarında 2000'den fazla öğretmene dijital dönüşüm ve yapay zeka entegrasyonu eğitimleri vermiş olan Yılmaz, YZ araçlarını teknik bir jargonla değil, "bir öğretmenin dilinden" anlatmasıyla tanınıyor.</p>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-4 border-t border-gray-100 pt-6">
+                            <div>
+                                <h5 class="font-bold text-3xl text-primary-600 mb-1">15+</h5>
+                                <p class="text-sm text-gray-500 uppercase font-semibold">Yıl Deneyim</p>
+                            </div>
+                            <div>
+                                <h5 class="font-bold text-3xl text-secondary mb-1">2000+</h5>
+                                <p class="text-sm text-gray-500 uppercase font-semibold">Eğitilen Öğretmen</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20 bg-white relative overflow-hidden">
+        <!-- Decoration -->
+        <div class="absolute top-0 right-0 w-64 h-64 bg-primary-50 rounded-full mix-blend-multiply filter blur-3xl opacity-70 transform translate-x-1/2 -translate-y-1/2"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Meslektaşlarınız Ne Diyor?</h2>
+                <p class="text-gray-600 text-lg">Bu kursu tamamlayan eğitimcilerin hayatlarındaki değişimlere kulak verin.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-gray-50 rounded-2xl p-8 relative fade-in-up delay-100">
+                    <i class="fa-solid fa-quote-left text-4xl text-primary-200 absolute top-6 left-6"></i>
+                    <div class="relative z-10">
+                        <div class="flex text-yellow-400 text-sm mb-4">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-gray-700 italic mb-6 leading-relaxed">"Hafta sonları saatlerimi alan ders planlama ve etkinlik hazırlama sürecim YZ sayesinde yarım saate düştü. Artık aileme ve kendime daha çok vakit ayırabiliyorum. Kesinlikle her öğretmenin alması gereken bir eğitim."</p>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-primary-700 font-bold text-lg">A.K.</div>
+                            <div>
+                                <h4 class="font-bold text-gray-900">Ayşe K.</h4>
+                                <p class="text-sm text-gray-500">İngilizce Öğretmeni</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-gray-50 rounded-2xl p-8 relative fade-in-up delay-200">
+                    <i class="fa-solid fa-quote-left text-4xl text-primary-200 absolute top-6 left-6"></i>
+                    <div class="relative z-10">
+                        <div class="flex text-yellow-400 text-sm mb-4">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-gray-700 italic mb-6 leading-relaxed">"Teknolojiye çok yatkın olmamama rağmen eğitim o kadar sade ve anlaşılırdı ki, ilk günden kendi ChatGPT asistanımı kurdum. Sınıf içi etkinliklerim artık çok daha eğlenceli ve interaktif."</p>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center text-green-700 font-bold text-lg">M.D.</div>
+                            <div>
+                                <h4 class="font-bold text-gray-900">Mustafa D.</h4>
+                                <p class="text-sm text-gray-500">Sınıf Öğretmeni</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-gray-50 rounded-2xl p-8 relative fade-in-up delay-300">
+                    <i class="fa-solid fa-quote-left text-4xl text-primary-200 absolute top-6 left-6"></i>
+                    <div class="relative z-10">
+                        <div class="flex text-yellow-400 text-sm mb-4">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-gray-700 italic mb-6 leading-relaxed">"Özellikle öğrencilerin YZ'yi etik dışı kullanmasını nasıl engelleyeceğimiz (veya bunu nasıl avantaja çevireceğimiz) konusundaki Modül 5 ufuk açıcıydı. Rubrik oluşturma aracı en büyük yardımcım oldu."</p>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center text-purple-700 font-bold text-lg">E.S.</div>
+                            <div>
+                                <h4 class="font-bold text-gray-900">Elif S.</h4>
+                                <p class="text-sm text-gray-500">Lise Müdürü</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="sss" class="py-20 bg-gray-50">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 fade-in-up">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Sıkça Sorulan Sorular</h2>
+            </div>
+
+            <div class="space-y-4 fade-in-up delay-100">
+                <!-- FAQ 1 -->
+                <div class="bg-white border border-gray-200 rounded-xl overflow-hidden">
+                    <button class="accordion-btn w-full px-6 py-4 flex justify-between items-center text-left focus:outline-none">
+                        <h4 class="font-bold text-gray-800">Kodlama bilmem gerekiyor mu?</h4>
+                        <i class="fas fa-chevron-down text-gray-400"></i>
+                    </button>
+                    <div class="accordion-content hidden px-6 pb-4 pt-1 text-gray-600">
+                        Hayır, kesinlikle gerekmiyor. Bu kurs tamamen son kullanıcı araçlarına (ChatGPT, Gemini vb.) ve bu araçlara doğal dille (Türkçe/İngilizce) komut verme (prompt yazma) yeteneklerine odaklanmaktadır.
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="bg-white border border-gray-200 rounded-xl overflow-hidden">
+                    <button class="accordion-btn w-full px-6 py-4 flex justify-between items-center text-left focus:outline-none">
+                        <h4 class="font-bold text-gray-800">Eğitimler canlı mı, video kayıt mı?</h4>
+                        <i class="fas fa-chevron-down text-gray-400"></i>
+                    </button>
+                    <div class="accordion-content hidden px-6 pb-4 pt-1 text-gray-600">
+                        Eğitimimiz hibrit modeldedir. Önceden çekilmiş 20+ saatlik yüksek kaliteli video içeriklere ömür boyu erişiminizin yanı sıra, haftalık 2 saat canlı soru-cevap ve atölye oturumları düzenlenmektedir.
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="bg-white border border-gray-200 rounded-xl overflow-hidden">
+                    <button class="accordion-btn w-full px-6 py-4 flex justify-between items-center text-left focus:outline-none">
+                        <h4 class="font-bold text-gray-800">Hangi branş öğretmenleri için uygundur?</h4>
+                        <i class="fas fa-chevron-down text-gray-400"></i>
+                    </button>
+                    <div class="accordion-content hidden px-6 pb-4 pt-1 text-gray-600">
+                        Kursumuz; ilkokul, ortaokul, lise ve üniversite düzeyindeki tüm branş öğretmenlerine hitap edecek şekilde tasarlanmıştır. YZ araçları branş bağımsız olarak uyarlanabilir.
+                    </div>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div class="bg-white border border-gray-200 rounded-xl overflow-hidden">
+                    <button class="accordion-btn w-full px-6 py-4 flex justify-between items-center text-left focus:outline-none">
+                        <h4 class="font-bold text-gray-800">Sertifika veriliyor mu?</h4>
+                        <i class="fas fa-chevron-down text-gray-400"></i>
+                    </button>
+                    <div class="accordion-content hidden px-6 pb-4 pt-1 text-gray-600">
+                        Evet, kursu tamamlayan katılımcılara e-Devlet onaylı veya uluslararası geçerliliği olan (kurum akreditasyonuna bağlı olarak değişir) "Eğitimde Yapay Zeka Uzmanlık Sertifikası" dijital olarak verilmektedir.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing / CTA Section -->
+    <section id="kayit" class="py-24 bg-gray-900 relative overflow-hidden">
+        <!-- Abstract Shapes -->
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-primary-900 to-transparent opacity-50"></div>
+        <div class="absolute bottom-0 left-0 w-64 h-64 bg-secondary rounded-full mix-blend-screen filter blur-[100px] opacity-40"></div>
+
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <h2 class="text-3xl md:text-5xl font-extrabold text-white mb-6">Geleceğin Sınıfını İnşa Etmeye Hemen Başlayın</h2>
+            <p class="text-xl text-gray-300 mb-10">Erken kayıt avantajlarından yararlanın. Kontenjanlar dolmadan yerinizi ayırtın ve öğretmenlik kariyerinize seviye atlatın.</p>
+            
+            <div class="bg-white rounded-3xl p-8 md:p-12 shadow-2xl max-w-2xl mx-auto text-left flex flex-col md:flex-row items-center justify-between gap-8 transform hover:scale-105 transition duration-300">
+                <div>
+                    <p class="text-primary-600 font-bold uppercase tracking-wider text-sm mb-2">Erken Kayıt Fırsatı</p>
+                    <div class="flex items-end gap-2 mb-2">
+                        <span class="text-5xl font-black text-gray-900">₺2.490</span>
+                        <span class="text-gray-400 line-through text-lg mb-1">₺4.000</span>
+                    </div>
+                    <p class="text-gray-500 text-sm">Tek seferlik ödeme. Ömür boyu erişim.</p>
+                    <ul class="mt-4 space-y-2">
+                        <li class="flex items-center gap-2 text-gray-700 font-medium"><i class="fa-solid fa-check-circle text-green-500"></i> Tüm Video Modüller</li>
+                        <li class="flex items-center gap-2 text-gray-700 font-medium"><i class="fa-solid fa-check-circle text-green-500"></i> Prompt Kütüphanesi (PDF)</li>
+                        <li class="flex items-center gap-2 text-gray-700 font-medium"><i class="fa-solid fa-check-circle text-green-500"></i> 1 Aylık Canlı Q&A Desteği</li>
+                    </ul>
+                </div>
+                
+                <div class="w-full md:w-auto">
+                    <button class="w-full md:w-auto bg-gradient-to-r from-primary-600 to-secondary hover:from-primary-700 hover:to-purple-700 text-white px-8 py-4 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transition flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-cart-shopping"></i> Satın Al ve Başla
+                    </button>
+                    <p class="text-center text-xs text-gray-400 mt-3"><i class="fa-solid fa-shield-halved"></i> 14 Gün Para İade Garantisi</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-50 pt-16 pb-8 border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="w-8 h-8 rounded-lg bg-primary-600 flex items-center justify-center text-white font-bold text-sm">
+                            <i class="fa-solid fa-brain"></i>
+                        </div>
+                        <span class="font-bold text-xl tracking-tight text-gray-900">Edu<span class="text-primary-600">AI</span></span>
+                    </div>
+                    <p class="text-gray-500 mb-6 max-w-sm">Eğitimcilerin yapay zeka devrimine öncülük etmesi için gerekli araçları, stratejileri ve vizyonu sağlıyoruz.</p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-gray-600 hover:bg-primary-600 hover:text-white transition"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-gray-600 hover:bg-primary-600 hover:text-white transition"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-gray-600 hover:bg-primary-600 hover:text-white transition"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-gray-900 mb-4">Hızlı Bağlantılar</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#neden-biz" class="text-gray-500 hover:text-primary-600 transition">Neden Yapay Zeka?</a></li>
+                        <li><a href="#mufredat" class="text-gray-500 hover:text-primary-600 transition">Müfredat</a></li>
+                        <li><a href="#egitmen" class="text-gray-500 hover:text-primary-600 transition">Eğitmen</a></li>
+                        <li><a href="#sss" class="text-gray-500 hover:text-primary-600 transition">Sıkça Sorulan Sorular</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-gray-900 mb-4">Yasal</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-500 hover:text-primary-600 transition">Kullanım Koşulları</a></li>
+                        <li><a href="#" class="text-gray-500 hover:text-primary-600 transition">Gizlilik Politikası</a></li>
+                        <li><a href="#" class="text-gray-500 hover:text-primary-600 transition">Mesafeli Satış Sözleşmesi</a></li>
+                        <li><a href="#" class="text-gray-500 hover:text-primary-600 transition">İletişim</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm">© 2024 EduAI Eğitim Teknolojileri. Tüm hakları saklıdır.</p>
+                <p class="text-gray-400 text-sm mt-2 md:mt-0">Öğretmenler için, sevgi ve <i class="fa-solid fa-heart text-red-500"></i> YZ ile tasarlandı.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile Menu Toggle
+            const mobileBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileIcon = mobileBtn.querySelector('i');
+
+            mobileBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                if(mobileMenu.classList.contains('hidden')){
+                    mobileIcon.classList.replace('fa-xmark', 'fa-bars');
+                } else {
+                    mobileIcon.classList.replace('fa-bars', 'fa-xmark');
+                }
+            });
+
+            // Close mobile menu on link click
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    mobileIcon.classList.replace('fa-xmark', 'fa-bars');
+                });
+            });
+
+            // Navbar Scroll Effect
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 20) {
+                    navbar.classList.add('shadow-md');
+                    navbar.classList.replace('bg-white/90', 'bg-white/95');
+                } else {
+                    navbar.classList.remove('shadow-md');
+                    navbar.classList.replace('bg-white/95', 'bg-white/90');
+                }
+            });
+
+            // Accordion Logic
+            const accordions = document.querySelectorAll('.accordion-btn');
+            accordions.forEach(acc => {
+                acc.addEventListener('click', function() {
+                    // Close others (Optional, uncomment if you want only one open at a time)
+                    /*
+                    accordions.forEach(otherAcc => {
+                        if (otherAcc !== this) {
+                            otherAcc.nextElementSibling.classList.add('hidden');
+                            const otherIcon = otherAcc.querySelector('.fa-chevron-up');
+                            if(otherIcon) {
+                                otherIcon.classList.replace('fa-chevron-up', 'fa-chevron-down');
+                            }
+                        }
+                    });
+                    */
+
+                    // Toggle current
+                    const content = this.nextElementSibling;
+                    const icon = this.querySelector('i.fas');
+                    
+                    content.classList.toggle('hidden');
+                    
+                    if (content.classList.contains('hidden')) {
+                        icon.classList.replace('fa-chevron-up', 'fa-chevron-down');
+                        this.classList.remove('bg-gray-100');
+                    } else {
+                        icon.classList.replace('fa-chevron-down', 'fa-chevron-up');
+                        this.classList.add('bg-gray-100');
+                    }
+                });
+            });
+
+            // Simple Intersection Observer for scroll animations (fade-in-up)
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Re-trigger animation
+                        entry.target.style.animation = 'none';
+                        entry.target.offsetHeight; /* trigger reflow */
+                        entry.target.style.animation = null; 
+                        entry.target.style.opacity = "1";
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-in-up').forEach((elem) => {
+                // Initial hide for smooth observer transition
+                elem.style.opacity = "0"; 
+                observer.observe(elem);
+            });
+        });
+    </script>
+</body>
+</html>
